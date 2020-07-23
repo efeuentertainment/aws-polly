@@ -1,10 +1,14 @@
-require('dotenv').config()
+require('dotenv').config() //load credentials from .env file
 // Load the SDK
 const AWS = require('aws-sdk')
 const Stream = require('stream')
 const Speaker = require('speaker')
+//const PLAYBACKDEVICE = process.argv[2];//hardware device
+//const VOICEID = process.argv[3];
 
-// Create an Polly client
+var fs = require('fs');
+
+// Create a Polly client
 const Polly = new AWS.Polly({
     signatureVersion: 'v4',
     region: 'eu-west-3'
@@ -18,10 +22,12 @@ const Player = new Speaker({
   device: 'hw:1,0'
 })
 
+let ttsData = fs.readFileSync( '/tmp/tts.txt' );
 let params = {
-    'Text': 'Hi, this is the amazon aws voice. how do you like it? i am feeling frisky already',
+    'Text': '<speak>' + ttsData + '</speak>',
     'OutputFormat': 'pcm',
-    'VoiceId': 'Joanna'
+    'VoiceId': 'Joanna',
+    'TextType': 'ssml'
 }
 
 Polly.synthesizeSpeech(params, (err, data) => {

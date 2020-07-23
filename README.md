@@ -1,10 +1,10 @@
 ## aws-polly
 multipurpose amazon Text-To-Speech aws 
 polly script. based on instructions and 
-examples from: 
-https://medium.com/@anaptfox/getting-started-with-amazon-polly-using-node-js-345e84dbd23d 
-https://medium.com/better-programming/text-to-speech-build-apps-that-talk-with-aws-polly-and-node-js-a9cdab99af04 
-https://trevorsullivan.net/2016/12/01/amazon-aws-cloud-polly-nodejs/
+examples from:    
+https://medium.com/@anaptfox/getting-started-with-amazon-polly-using-node-js-345e84dbd23d    
+https://medium.com/better-programming/text-to-speech-build-apps-that-talk-with-aws-polly-and-node-js-a9cdab99af04    
+https://trevorsullivan.net/2016/12/01/amazon-aws-cloud-polly-nodejs/   
 
 ### Installation
 1) speaker module dependency: 
@@ -12,12 +12,9 @@ https://trevorsullivan.net/2016/12/01/amazon-aws-cloud-polly-nodejs/
 ```bash 
 sudo apt-get install libasound2-dev 
 ``` 
+2) modules install
 ```bash 
-npm i speaker 
-``` 
-2) aws install: 
-```bash 
-npm i aws-sdk dotenv 
+npm i speaker aws-sdk dotenv 
 ``` 
 3) rename file .env-blank to .env 
 
