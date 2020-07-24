@@ -1,4 +1,4 @@
-require('dotenv').config() //load credentials from .env file
+require('dotenv').config({ path: '/usr/local/aws-polly/.env' }) //load credentials from .env file
 // Load the SDK
 const AWS = require('aws-sdk')
 const Stream = require('stream')
@@ -14,14 +14,7 @@ const Polly = new AWS.Polly({
     region: 'eu-west-3'
 })
 
-// Create the Speaker instance
-const Player = new Speaker({
-  channels: 1,
-  bitDepth: 16,
-  sampleRate: 16000,
-  device: 'hw:1,0'
-})
-
+function ttsBurrito(){
 let ttsData = fs.readFileSync( '/tmp/tts.txt' );
 let params = {
     'Text': '<speak>' + ttsData + '</speak>',
@@ -37,10 +30,24 @@ Polly.synthesizeSpeech(params, (err, data) => {
         if (data.AudioStream instanceof Buffer) {
             // Initiate the source
             var bufferStream = new Stream.PassThrough()
+            // Pipe into Player
+            bufferStream.pipe( new Speaker({
+             channels: 1,
+             bitDepth: 16,
+             sampleRate: 16000,
+             device: 'hw:1,0'
+            }))
             // convert AudioStream into a readable stream
             bufferStream.end(data.AudioStream)
-            // Pipe into Player
-            bufferStream.pipe(Player)
         }
     }
 })
+}
+
+
+// --------------------------------------------------
+
+module.exports = {
+ ttsBurrito
+};
+
