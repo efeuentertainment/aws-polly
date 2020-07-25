@@ -19,7 +19,7 @@ let ttsData = fs.readFileSync( '/tmp/tts.txt' );
 let params = {
     'Text': '<speak>' + ttsData + '</speak>',
     'OutputFormat': 'pcm',
-    'VoiceId': 'Joanna',
+    'VoiceId': 'Matthew',
     'TextType': 'ssml'
 }
 

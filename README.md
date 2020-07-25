@@ -40,3 +40,5 @@ npm i speaker aws-sdk dotenv
 node index.js 
 ```
 
+### Language
+language can be set using its voiceId. (without phonetics. eg é -> e)
