@@ -8,8 +8,6 @@ https://trevorsullivan.net/2016/12/01/amazon-aws-cloud-polly-nodejs/
 
 Listen to some voice examples:
 https://www.amazonaws.cn/en/polly/   
-Full list of available voices:
-https://docs.aws.amazon.com/polly/latest/dg/voicelist.html   
 Listen to all voices (requires aws console login) :
 https://us-east-2.console.aws.amazon.com/polly/home/SynthesizeSpeech   
 
@@ -41,4 +39,9 @@ node index.js
 ```
 
 ### Language
-language can be set using its voiceId. (without phonetics. eg é -> e)
+language can be set using its VoiceId. (without phonetics. eg é -> e)  
+Full list of available voices:
+https://docs.aws.amazon.com/polly/latest/dg/voicelist.html  
+
+check how many characters you've used this month here:
+https://console.aws.amazon.com/billing/home#/bills

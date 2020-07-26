@@ -14,8 +14,7 @@ const Polly = new AWS.Polly({
     region: 'eu-west-3'
 })
 
-process.on('SIGUSR1', () => {
-console.info('SIGUSR1 signal received.');
+function ttsBurrito(){
 let ttsData = fs.readFileSync( '/tmp/tts.txt' );
 let params = {
     'Text': '<speak>' + ttsData + '</speak>',
@@ -43,4 +42,12 @@ Polly.synthesizeSpeech(params, (err, data) => {
         }
     }
 })
-});
+}
+
+
+// --------------------------------------------------
+
+module.exports = {
+ ttsBurrito
+};
+
