@@ -7,6 +7,7 @@ const Speaker = require('speaker')
 //const VOICEID = process.argv[3];
 
 var fs = require('fs');
+var done = (function wait () { if (!done) setTimeout(wait, 1000) })(); //keep runninh until done
 
 // Create a Polly client
 const Polly = new AWS.Polly({
@@ -14,8 +15,7 @@ const Polly = new AWS.Polly({
     region: 'eu-west-3'
 })
 
-process.on('SIGUSR1', () => {
-console.info('SIGUSR1 signal received.');
+function ttsBurrito(){
 let ttsData = fs.readFileSync( '/tmp/tts.txt' );
 let params = {
     'Text': '<speak>' + ttsData + '</speak>',
@@ -43,4 +43,11 @@ Polly.synthesizeSpeech(params, (err, data) => {
         }
     }
 })
+}
+ttsBurrito();
+
+process.on('SIGUSR1', () => {
+console.info('SIGUSR1 signal received.');
+ttsBurrito();
 });
+
