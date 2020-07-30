@@ -5,10 +5,11 @@ const Stream = require('stream')
 const Speaker = require('speaker')
 //const PLAYBACKDEVICE = process.argv[2];//hardware device
 //const VOICEID = process.argv[3];
-
 var fs = require('fs');
-var done = (function wait () { if (!done) setTimeout(wait, 1000) })(); //keep runninh until done
 
+let maxInstances = 2;
+
+var done = (function wait () { if (!done) setTimeout(wait, 1000) })(); //keep runninh until done
 // Create a Polly client
 const Polly = new AWS.Polly({
     signatureVersion: 'v4',
@@ -16,6 +17,8 @@ const Polly = new AWS.Polly({
 })
 
 function ttsBurrito(){
+  console.info("instances left: " + maxInstances);    
+  if (maxInstances){
 let ttsData = fs.readFileSync( '/tmp/tts.txt' );
 let params = {
     'Text': '<speak>' + ttsData + '</speak>',
@@ -30,24 +33,31 @@ Polly.synthesizeSpeech(params, (err, data) => {
     } else if (data) {
         if (data.AudioStream instanceof Buffer) {
             // Initiate the source
+            maxInstances--;
             var bufferStream = new Stream.PassThrough()
+            const speaker = new Speaker({
+              channels: 1,
+              bitDepth: 16,
+              sampleRate: 16000,
+              device: 'hw:1,0'
+            })
             // Pipe into Player
-            bufferStream.pipe( new Speaker({
-             channels: 1,
-             bitDepth: 16,
-             sampleRate: 16000,
-             device: 'hw:1,0'
-            }))
+            bufferStream.pipe(speaker)
             // convert AudioStream into a readable stream
             bufferStream.end(data.AudioStream)
+            speaker.end(() => {
+	      console.info("instance ++");
+              maxInstances++;
+            });
         }
     }
 })
 }
-ttsBurrito();
+}
 
 process.on('SIGUSR1', () => {
 console.info('SIGUSR1 signal received.');
 ttsBurrito();
 });
 
+ttsBurrito();
