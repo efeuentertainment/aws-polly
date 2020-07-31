@@ -47,14 +47,6 @@ call from your node code:
 POLLY.ttsBurrito();
 ```
 
-### Language
-language can be set using its VoiceId. (without phonetics. eg é -> e)  
-Full list of available voices:
-https://docs.aws.amazon.com/polly/latest/dg/voicelist.html  
-
-check how many characters you've used this month here:
-https://console.aws.amazon.com/billing/home#/bills
-
 ### References
 script is based on instructions and examples from:    
 https://medium.com/@anaptfox/getting-started-with-amazon-polly-using-node-js-345e84dbd23d    
@@ -65,6 +57,11 @@ Listen to some voice examples:
 https://www.amazonaws.cn/en/polly/   
 Listen to all voices (requires aws console login) :   
 https://us-east-2.console.aws.amazon.com/polly/home/SynthesizeSpeech   
+Full list of available voices:
+https://docs.aws.amazon.com/polly/latest/dg/voicelist.html  
+
+check how many characters you've used this month here:
+https://console.aws.amazon.com/billing/home#/bills
 
 SSML (markup language) reference doc:  
 https://developer.amazon.com/it-IT/docs/alexa/custom-skills/speech-synthesis-markup-language-ssml-reference.html#prosody   
