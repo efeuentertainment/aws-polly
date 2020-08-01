@@ -1,13 +1,12 @@
 ## aws-polly
-multipurpose amazon Text-To-Speech aws 
-polly script. 
-a simple to use alternative, but with a ~3s execution time, is listed further down.
+multipurpose amazon Text-To-Speech aws polly script.  
+a simple to use alternative, but with a ~3s execution time, is listed further down.  
 this sctipt runs as daemon and waits for the bash SIGUSR1 signal, to achieve a minimal playback latency time. (under 0.5s)
 
 ### Installation
 1) download project to /usr/local/aws-polly/
 
-2) speaker module dependency: 
+2) speaker module dependency:  
 (from https://github.com/TooTallNate/node-speaker ) 
 ```bash 
 sudo apt-get install libasound2-dev 
@@ -25,9 +24,12 @@ call the following from your app / script as root:
 ```bash
 pkill -x -o -SIGUSR1 -f 'node /usr/local/aws-polly/signal.js' || node /usr/local/aws-polly/signal.js &
 ```
-this will:
-•send a SIGUSR1 signal to the script,
-•or start it in background if it doesn't run.
+this will:  
+•send a SIGUSR1 signal to the script,  
+•or start it in background if it doesn't run.  
+
+run 'node signal.js --help' for information about the optional cli arguments, and add them (twice) to the above line.  
+by default, signal.js will load /tmp/tts.txt, read it using voice-id 'Matthew', and play it on the system default speaker.  
 
 list pid of running instance:
 ```bash

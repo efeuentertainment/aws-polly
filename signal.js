@@ -1,10 +1,12 @@
-require('dotenv').config({ path: '/usr/local/aws-polly/.env' }) //load credentials from .env file
+//load credentials from .env file
+require('dotenv').config({ path: '/usr/local/aws-polly/.env' });
 // Load the SDK
 const AWS = require('aws-sdk');
 const Stream = require('stream');
 const Speaker = require('speaker');
 var fs = require('fs');
 const minimist = require('minimist');
+//get cli arguments or use default values
 let argv = minimist(process.argv.slice(2), {
 	alias: {
 		h: ['help', 'version'],
@@ -17,11 +19,12 @@ let argv = minimist(process.argv.slice(2), {
 	},
 	string: ['v', 'a']
 });
-console.log(argv);
+//console.log(argv);
 
 let maxInstances = 2;
 
-var done = (function wait () { if (!done) setTimeout(wait, 1000) })(); //keep running until done
+//keep script running until done
+var done = (function wait () { if (!done) setTimeout(wait, 1000) })();
 // Create a Polly client
 const Polly = new AWS.Polly({
 	signatureVersion: 'v4',
@@ -29,9 +32,10 @@ const Polly = new AWS.Polly({
 })
 
 function ttsBurrito(){
-	console.info("instances left: " + maxInstances);    
-	if (maxInstances){
+	//console.info("instances left: " + maxInstances);    
+	if (maxInstances){  //only a few simultanious instances allowed > skip
 		let ttsData = fs.readFileSync( '/tmp/tts.txt' );
+		//set up polly parameters
 		let params = {
 			'Text': '<speak>' + ttsData + '</speak>',
 			'OutputFormat': 'pcm',
@@ -58,7 +62,7 @@ function ttsBurrito(){
 					// convert AudioStream into a readable stream
 					bufferStream.end(data.AudioStream)
 					speaker.end(() => {
-						console.info("instance ++");
+						//console.info("instance ++");
 						maxInstances++;
 					});
 				}
@@ -68,12 +72,13 @@ function ttsBurrito(){
 }
 
 process.on('SIGUSR1', () => {
-	console.info('SIGUSR1 signal received.');
+	console.info('signal.js: SIGUSR1 signal received.');
 	ttsBurrito();
 });
 
 if (argv.help){
 	console.info('Usage: \n\tnode signal.js [-h|--help|--version] | [-v|--voice-id voiceID] [-a|--audiodevice dev]');
+	console.info('\t(signal.js always reads /tmp/tts.txt for text input)');
 	console.info('Example: \n\tnode signal.js --voice-id Matthew --audiodevice hw:1,0');
 	console.info('\nsignal.js version 1.1, date 08.2020, author efeuentertainment');
 	console.info('github https://github.com/efeuentertainment/aws-polly');
