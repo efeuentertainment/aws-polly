@@ -3,5 +3,4 @@ node_modules
 index
 install.sh
 index.js.bak
-aws-polly-signed-signal.js
 aws-polly-signed-signal

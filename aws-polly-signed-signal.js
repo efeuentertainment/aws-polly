@@ -39,10 +39,10 @@ function ttsBurrito(){
   let ttsData = fs.readFileSync( '/tmp/tts.txt' );
   //set up polly parameters
   let params = {
-    'Text': '<speak>' + ttsData.toString() + '</speak>',
+    'Text': ttsData.toString(),
     'OutputFormat': 'mp3',
     'VoiceId': argv.v,
-    'TextType': 'ssml'
+    'TextType': 'text'
   }
   Polly.synthesizeSpeech(params, (err, data) => {
     if (err) {
