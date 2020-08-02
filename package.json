@@ -1,8 +1,9 @@
 {
-  "name": "aws-polly",
-  "version": "1.0.0",
+  "name": "aws-polly-signed-signal",
+  "version": "1.2.0",
   "description": "",
   "main": "signal.js",
+  "bin": "signal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +15,8 @@
     "fs": "0.0.1-security",
     "minimist": "^1.2.5",
     "speaker": "^0.5.2"
+  },
+  "pkg": {
+    "assets": "/usr/local/aws-polly/.env"
   }
 }
