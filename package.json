@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "",
   "main": "signal.js",
-  "bin": "aws-polly-signed-signal.js",
+  "bin": "signal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,10 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.717.0",
+    "child_process": "^1.0.2",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
-    "minimist": "^1.2.5",
-    "speaker": "^0.5.2"
+    "minimist": "^1.2.5"
   },
   "pkg": {
     "assets": "/usr/local/aws-polly/.env"

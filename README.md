@@ -6,14 +6,13 @@ this sctipt runs as daemon and waits for the bash SIGUSR1 signal, to achieve a m
 ### Installation
 1) download project to /usr/local/aws-polly/
 
-2) speaker module dependency:  
-(from https://github.com/TooTallNate/node-speaker ) 
+2) install dependency:  
 ```bash 
-sudo apt-get install libasound2-dev 
+sudo apt install mpg123 
 ``` 
 3) modules install
 ```bash 
-npm i speaker aws-sdk dotenv fs stream
+npm i aws-sdk dotenv fs child_process minimist
 ``` 
 4) rename file .env-blank to .env 
 
@@ -59,7 +58,7 @@ Listen to some voice examples:
 https://www.amazonaws.cn/en/polly/   
 Listen to all voices (requires aws console login) :   
 https://us-east-2.console.aws.amazon.com/polly/home/SynthesizeSpeech   
-Full list of available voices:
+Full list of available voices:  
 https://docs.aws.amazon.com/polly/latest/dg/voicelist.html  
 
 check how many characters you've used this month here:
