@@ -58,7 +58,7 @@ Listen to some voice examples:
 https://www.amazonaws.cn/en/polly/   
 Listen to all voices (requires aws console login) :   
 https://us-east-2.console.aws.amazon.com/polly/home/SynthesizeSpeech   
-Full list of available voices:  
+Full list of available voices: (write voice names without phonetics. Léa -> Lea)  
 https://docs.aws.amazon.com/polly/latest/dg/voicelist.html  
 
 check how many characters you've used this month here:
