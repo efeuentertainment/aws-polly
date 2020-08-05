@@ -28,8 +28,6 @@ var done = (function wait () { if (!done) setTimeout(wait, 1000) })();
 // Create a Polly client
 const Polly = new AWS.Polly({
 	signatureVersion: 'v4',
-	//accessKeyId: 'id', //if in-code authentication is required
-	//secretAccessKey: 'key', //if in-code authentication is required
 	region: 'eu-west-3'
 })
 

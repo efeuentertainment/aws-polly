@@ -1,7 +1,7 @@
 ## aws-polly
-multipurpose amazon Text-To-Speech aws polly script.  
+very low latency amazon Text-To-Speech aws polly script.  
 a simple to use alternative, but with a ~3s execution time, is listed further down.  
-this sctipt runs as daemon and waits for the bash SIGUSR1 signal, to achieve a minimal playback latency time. (under 0.5s)
+this sctipt runs as daemon and waits for the bash SIGUSR1 signal, to achieve a very low playback latency time (under 0.5s).
 
 ### Installation
 1) download project to /usr/local/aws-polly/
@@ -70,7 +70,7 @@ AWS polly class properties doc:
 https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Polly.html   
 
 ### CLI alternative
-an easy to use alternative are the CLI packages from aws themselves.  
+an easy to use alternative are the CLI packages from aws themselves. execution time until playback is about 2.7s.  
 a complete command could then look like this:
 ```bash
 aws polly synthesize-speech --voice-id Matthew --output-format mp3 --text "<speak>$(cat /tmp/tts.txt)</speak>" --text-type ssml /tmp/tts.mp3 && mpg123 -q --no-control -a plughw:1 /tmp/tts.mp3 &
