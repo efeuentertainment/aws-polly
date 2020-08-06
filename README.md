@@ -87,11 +87,11 @@ either create the aws credentials files or run `aws config`
 https://blog.gruntwork.io/authenticating-to-aws-with-the-credentials-file-d16c0fbcbf9e?gi=f46ca71979f8  
   
 #### *ignore this part. pkg workflow notes for future self*
-*0) copy creds from old .js
+0) copy creds from old .js
 1) cp signal.js aws-polly-signed-signal.js
 2) add creds into param
 3) npm i pkg
 4) get https://github.com/vercel/pkg-fetch , or for armv7 https://github.com/robertsLando/pkg-binaries
 5) pkg --targets node10.15.3-linux-armv7 package.json
 6) mv aws-polly-signed-signal ../
-*
+
