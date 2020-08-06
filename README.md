@@ -27,7 +27,7 @@ this will:
 •send a SIGUSR1 signal to the script,  
 •or start it in background if it doesn't run.  
 
-run 'node signal.js --help' for information about the optional cli arguments, and add them (twice) to the above line.  
+run `node signal.js --help` for information about the optional cli arguments, and add them (twice) to the above line.  
 by default, signal.js will load /tmp/tts.txt, read it using voice-id 'Matthew', and play it on the system default speaker.  
 
 list pid of running instance:
@@ -83,7 +83,15 @@ https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
 CLI v2 is not supported on raspberry pi, but CLI v1 is still available for arm processors.  
 CLI v1 install:  
 https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html#install-linux-bundled-sudo  
-either create the aws credentials files or run $ aws config  
+either create the aws credentials files or run `aws config`  
 https://blog.gruntwork.io/authenticating-to-aws-with-the-credentials-file-d16c0fbcbf9e?gi=f46ca71979f8  
   
-
+#### *ignore this part. pkg workflow notes for future self*
+*0) copy creds from old .js
+1) cp signal.js aws-polly-signed-signal.js
+2) add creds into param
+3) npm i pkg
+4) get https://github.com/vercel/pkg-fetch , or for armv7 https://github.com/robertsLando/pkg-binaries
+5) pkg --targets node10.15.3-linux-armv7 package.json
+6) mv aws-polly-signed-signal ../
+*
