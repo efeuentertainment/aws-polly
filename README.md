@@ -39,7 +39,7 @@ kill running instance:
 pkill -SIGINT -f "node /usr/local/aws-polly/signal.js"
 ```
 
-### Usage for export module function.js
+### Usage for export module function.js (outdated and missing features!!)
 ```bash
 const POLLY = require("/usr/local/aws-polly/function.js");
 ```
