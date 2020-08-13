@@ -38,7 +38,8 @@ kill running instance:
 ```bash
 pkill -SIGINT -f "node /usr/local/aws-polly/signal.js"
 ```
-
+PSA:  
+- all arguments are necessary twice, because otherwise pkill will match its own child_process.exec() process when executed from node.js
 ### Usage for export module function.js (outdated and missing features!!)
 ```bash
 const POLLY = require("/usr/local/aws-polly/function.js");
