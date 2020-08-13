@@ -24,8 +24,8 @@ call the following from your app / script as root:
 pkill -x -o -SIGUSR1 -f 'node /usr/local/aws-polly/signal.js' || node /usr/local/aws-polly/signal.js &
 ```
 this will:  
-•send a SIGUSR1 signal to the script,  
-•or start it in background if it doesn't run.  
+- send a SIGUSR1 signal to the script,  
+- or start it in background if it doesn't run.  
 
 run `node signal.js --help` for information about the optional cli arguments, and add them (twice) to the above line.  
 by default, signal.js will load /tmp/tts.txt, read it using voice-id 'Matthew', and play it on the system default speaker.  
