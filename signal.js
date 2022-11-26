@@ -1,5 +1,6 @@
 //load credentials from .env file
 require('dotenv').config({ path: '/usr/local/aws-polly/.env' });
+// created on PepitoBots by firened
 // Load the SDK
 const AWS = require('aws-sdk');
 const { exec } = require("child_process");
